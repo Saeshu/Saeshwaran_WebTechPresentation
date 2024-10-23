@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Voting System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .vote-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Styles for the Yes button */
+        .vote-yes {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        .vote-yes:hover {
+            background-color: #27ae60;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Styles for the No button */
+        .vote-no {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .vote-no:hover {
+            background-color: #c0392b;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .results {
+            margin-top: 40px;
+            font-size: 1.5em;
+            color: #34495e;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .results p {
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Do you like this website?</h1>
+
+    <div class="vote-buttons">
+        <button class="vote-yes" onclick="vote('yes')">Yes</button>
+        <button class="vote-no" onclick="vote('no')">No</button>
+    </div>
+
+    <div class="results">
+        <p>Yes votes: <span id="yesCount">0</span></p>
+        <p>No votes: <span id="noCount">0</span></p>
+        <p>Percentage: <span id="countper">0</span></p>
+    </div>
+
+    <script>
+        // Initialize vote counters
+        let yesVotes = 0;
+        let noVotes = 0;
+
+        // Function to handle voting
+        function vote(option) {
+            if (option === 'yes') {
+                yesVotes++;
+                votesPer=yesVotes/(yesVotes+noVotes)*100
+                document.getElementById('yesCount').innerText = yesVotes;
+            } else if (option === 'no') {
+                
+                document.getElementById('noCount').innerText = noVotes;
+                // Display a pop-up message when "No" is clicked
+                votesPer=yesVotes/(yesVotes+noVotes)*100
+                alert("You Suck. TRY AGAIN!!!");
+            }
+                document.getElementById('countper').innerText = votesPer;
+                
+            
+        }
+    </script>
+
+</body>
+</html>
